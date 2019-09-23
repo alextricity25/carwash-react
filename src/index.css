@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +12,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+div.navbar
+{
+	font-family: Raleway;
+	margin: 0 auto;
+	padding: 1em 3em;
+	text-align: center;
+}
+
+div.navbar a
+{
+	color: #FFF;
+	text-decoration: none;
+	font: 20px Raleway;
+	margin: 0px 10px;
+	padding: 10px 10px;
+	position: relative;
+	z-index: 0;
+	cursor: pointer;
+}
+
+.gray
+{
+	background: #9e9e9e;
+}
+
+div.highlightTextIn a:before
+{
+	position: absolute;
+	color: #FFF;
+	top: 0px;
+	left: 0px;
+	padding: 10px;
+	overflow: hidden;
+	content: attr(alt);
+	transition: all 0.3s;
+	transform: scale(1.2);
+	opacity: 0;
+}
+
+div.highlightTextIn a:hover:before
+{
+	transform: scale(1);
+	opacity: 1;
+}
+
+div.highlightTextIn a
+{
+	color: rgba(0, 0, 0, 0.4);
 }

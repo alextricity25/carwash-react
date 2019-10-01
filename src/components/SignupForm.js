@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 class SignupForm extends React.Component {
 	state = {
 		username: '',
-		password: ''
+		password1: '',
+		password2: '',
+		email: ''
 	};
 
-	handle_chage = e => {
+
+	handle_change = e => {
 		const name = e.target.name;
 		const value = e.target.value;
 		this.setState(prevstate => {
@@ -31,8 +34,22 @@ class SignupForm extends React.Component {
 			  <label htmlFor="password">Password</label>
 			  <input
 			    type='password'
-			    name='password'
-			    value={this.state.password}
+			    name='password1'
+			    value={this.state.password1}
+			    onChange={this.handle_change}
+			  />
+			  <label htmlFor="Reenter Password">Reenter password</label>
+			  <input
+			    type='password'
+			    name='password2'
+			    value={this.state.password2}
+			    onChange={this.handle_change}
+			  />
+			  <label htmlFor="Email">Email</label>
+			  <input
+			    type='text'
+			    name='email'
+			    value={this.state.email}
 			    onChange={this.handle_change}
 			  />
 			  <input type='submit'/>

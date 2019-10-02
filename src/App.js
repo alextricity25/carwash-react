@@ -10,7 +10,8 @@ class App extends Component {
 		this.state = {
 			displayed_form: '',
 			logged_in: localStorage.getItem('token') ? true: false,
-			username: ''
+			username: '',
+			error_text: ''
 		};
 	}
 
@@ -38,15 +39,29 @@ class App extends Component {
 			},
 			body: JSON.stringify(data)
 		})
-		.then(res => res.json())
+		.then(res => {
+			if(res.ok) {
+				return res.json();
+			} else {
+				throw Error(`Request rejected with status ${res.status}`);
+			}
+		})
 		.then(json => {
 			localStorage.setItem('token', json.token);
 			this.setState({
 				logged_in: true,
 				displayed_form: '',
-				username: json.user.username
+				username: json.user.username,
+				error_text: ''
 			});
-		});
+		})
+		.catch( err => {
+				this.setState({
+					error_text: err.message
+				});
+				console.error(err);
+			}
+		);
 	};
 
 	handle_signup = (e, data) => {
@@ -64,7 +79,7 @@ class App extends Component {
 			this.setState({
 				logged_in: true,
 				displayed_form: '',
-				username: json.username
+				username: json.user.username
 			});
 		});
 	};
@@ -99,6 +114,7 @@ class App extends Component {
 			    logged_in={this.state.logged_in}
 			    display_form={this.display_form}
 			    handle_logout={this.handle_logout}
+			    error_text={this.state.error_text}
 			  />
 			  {form}
 			  <h3>

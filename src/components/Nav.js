@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Cw from "./cw";
+import ErrorBar from "./ErrorBar";
 
 function Nav(props) {
 	const logged_out_nav = (
@@ -21,7 +22,15 @@ function Nav(props) {
 		</div>
 	);
 
-	return <div><Cw />{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
+	return (
+	<div>
+	  <Cw />
+	  <ErrorBar
+	    error_text={props.error_text}
+	  />
+	  {props.logged_in ? logged_in_nav : logged_out_nav}
+	</div>
+	);
 }
 
 export default Nav;
@@ -29,5 +38,6 @@ export default Nav;
 Nav.propTypes = {
 	logged_in: PropTypes.bool.isRequired,
 	display_form: PropTypes.func.isRequired,
-	handle_logout: PropTypes.func.isRequired
+	handle_logout: PropTypes.func.isRequired,
+	error_text: PropTypes.string.isRequired,
 };

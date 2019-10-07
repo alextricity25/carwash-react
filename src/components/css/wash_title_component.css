@@ -1,0 +1,18 @@
+.wash-row {
+	margin: 0;
+	padding: 10px 40px;
+	list-style: none;
+	background-color: #eaeaea;
+	display: table;
+}
+
+.wash-row li {
+	display: inline-block;
+	vertical-align: top;
+	float: left;
+}
+
+.listwashes div {
+	margin: 0 auto;
+	width: 25em;
+}

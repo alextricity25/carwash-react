@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import "./css/wash_title_component.css";
 
 function WashTitleComponent(props) {
 
 	const wash_title = (
-		<div>
-		  <a alt="title">Title:</a>
-		  <a alt="title">{ props.title }</a>
-		  <a alt="owner">Owner:</a>
-		  <a alt="owner">{ props.owner }</a>
-		</div>
+		<ul class="wash-row">
+		  <li>{ props.title }</li>
+		  <li>{ props.owner }</li>
+		</ul>
 	);
 
 	return <div>{wash_title}</div>;

@@ -4,11 +4,10 @@ import WashComponent from "./WashComponent"
 
 class ListWashesComponent extends React.Component {
 	state = {
-		number: 5,
 		washes: []
 	};
 
-	get_request = (e) => {
+	componentDidMount() {
 		fetch('http://localhost:8000/washes/', {
 			method: 'GET',
 			headers: {
@@ -26,14 +25,13 @@ class ListWashesComponent extends React.Component {
 				washes: washes_list
 			});
 			});
-		}
+	}
 
 	render() {
-		this.get_request();
 		return(
-			<div>
+			<div class="listwashes">
+			  <h4>YOUR WASHES:</h4>
 			  {this.state['washes']}
-			  <h4>HELLO</h4>
 			</div>
 			)
 	}

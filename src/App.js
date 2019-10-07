@@ -12,7 +12,8 @@ class App extends Component {
 			displayed_form: '',
 			logged_in: localStorage.getItem('token') ? true: false,
 			username: '',
-			error_text: ''
+			error_text: '',
+			displayed_viewport: ''
 		};
 	}
 
@@ -87,7 +88,7 @@ class App extends Component {
 
 	handle_logout = () => {
 		localStorage.removeItem('token');
-		this.setState({ logged_in: false, username: '' });
+		this.setState({ logged_in: false, username: '', displayed_viewport: '' });
 	};
 
 	display_form = form => {
@@ -96,8 +97,16 @@ class App extends Component {
 		});
 	};
 
+	display_viewport = viewport => {
+		this.setState({
+			displayed_viewport: viewport
+		});
+	};
+
 	render() {
 		let form;
+		let viewport;
+
 		switch (this.state.displayed_form) {
 			case 'login':
 				form = <LoginForm handle_login={this.handle_login} />;
@@ -109,6 +118,15 @@ class App extends Component {
 				form = null;
 		}
 
+		switch (this.state.displayed_viewport) {
+			case 'list_washes':
+				viewport = <ListWashesComponent />;
+				break;
+			default:
+				viewport = null;
+		}
+
+
 		return (
 			<div className="App">
 			  <Nav
@@ -116,6 +134,7 @@ class App extends Component {
 			    display_form={this.display_form}
 			    handle_logout={this.handle_logout}
 			    error_text={this.state.error_text}
+			    display_viewport={this.display_viewport}
 			  />
 			  {form}
 			  <h3>
@@ -123,7 +142,7 @@ class App extends Component {
 				    ? `Hello, ${this.state.username}`
 				    : 'Please Log In'}
 			  </h3>
-			  <ListWashesComponent />
+			  {viewport}
 			</div>
 		);
 	}

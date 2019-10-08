@@ -6,12 +6,12 @@ function WashTitleComponent(props) {
 
 	const wash_title = (
 		<ul class="wash-row">
-		  <li>{ props.title }</li>
-		  <li>{ props.owner }</li>
+		  <li>{ props.title } -</li>
+		  <li>- { props.owner }</li>
 		</ul>
 	);
 
-	return <div>{wash_title}</div>;
+	return <div class="wash-title-row-background">{wash_title}</div>;
 }
 
 export default WashTitleComponent;

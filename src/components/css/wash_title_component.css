@@ -1,8 +1,7 @@
 .wash-row {
-	margin: 0;
+	margin: 0 auto;
 	padding: 10px 40px;
 	list-style: none;
-	background-color: #eaeaea;
 	display: table;
 }
 
@@ -15,4 +14,10 @@
 .listwashes div {
 	margin: 0 auto;
 	width: 25em;
+	padding: 3px;
+}
+
+.wash-title-row-background {
+	background-color: #eaeaea;
+	border: 2px solid;
 }

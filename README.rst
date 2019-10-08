@@ -3,7 +3,7 @@ carwash-react
 
 I like to wash cars.
 
-This is the repository for the front end of the carwash website - a tools designed
+This is the repository for the front end of the carwash website - a tool designed
 to help detailers and car washing enthusiasts. Think of a place where you can
 manage all your tools, towels, washes, and details. Relationships between tools
 and washes can be customized to present you with a simple list of what tools you
